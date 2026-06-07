@@ -1,0 +1,2 @@
+# GluecksRad
+Glücksrad individuell einstellbar
