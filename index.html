@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1, minimum-scale=1">
     <title>Neon Glücksrad Pro</title>
     
     <!-- App Icons Integration -->
@@ -31,6 +31,12 @@
             user-select: none;
             -webkit-user-select: none;
             -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        html, body {
+            touch-action: manipulation;
+            -webkit-touch-callout: none;
         }
 
         body {
@@ -485,6 +491,17 @@
     </div>
 
     <script>
+        // Verhindere Zoom durch Tastenkombinationen und Gesten
+        document.addEventListener('gesturestart', (e) => {
+            e.preventDefault();
+        }, false);
+
+        document.addEventListener('wheel', (e) => {
+            if (e.ctrlKey) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
         const neonColors = [
             { hex: '#b666ff', rgb: '182, 102, 255' },
             { hex: '#3b82f6', rgb: '59, 130, 246' },
